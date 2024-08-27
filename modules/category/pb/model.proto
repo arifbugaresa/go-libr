@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package category;
+
+message Category {
+  int64 id = 1;
+  string name = 2;
+  string description = 3;
+}
+
+message InsertCategoryRequest {
+  string name = 1;
+  string description = 2;
+  string modified_by = 3;
+}
+
+message InsertCategoryResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+service Service {
+  rpc InsertCategory (InsertCategoryRequest) returns (InsertCategoryResponse);
+}
+
+option go_package = "modules/category/pb";
+
+
+
+

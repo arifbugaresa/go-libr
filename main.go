@@ -7,6 +7,7 @@ import (
 	"go-libr/configs"
 	"go-libr/databases/connection"
 	"go-libr/databases/migration"
+	"go-libr/modules/category"
 	"go-libr/modules/user"
 	"go-libr/utils/logger"
 	"go-libr/utils/rabbitmq"
@@ -57,6 +58,7 @@ func InitiateRouter(dbConnection *sql.DB, rabbitMqConn *rabbitmq.RabbitMQ) {
 	swagger.Initiator(router)
 
 	user.Initiator(router, rabbitMqConn, dbConnection)
+	category.Initiator(router)
 
 	router.Run(viper.GetString("app.port"))
 }
