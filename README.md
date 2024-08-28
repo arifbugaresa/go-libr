@@ -43,11 +43,10 @@ Once the application is running, the API will be available at http://localhost:8
 `GET` `localhost:8080/api/categories` - Retrieve a list of books.
 
 ## Architecture
+<img width="777" alt="Screenshot 2024-08-28 at 11 21 16" src="https://github.com/user-attachments/assets/e65db8ef-d648-49d0-a8f6-0ebefe411fa3">
 
 ## Entity Relation Diagram
-
-## Contributing
-If you would like to contribute, please fork this repository and create a pull request. For major changes, please open an issue first to discuss what you would like to change.
+<img width="777" alt="Screenshot 2024-08-27 at 13 15 28" src="https://github.com/user-attachments/assets/96a7d75c-260d-4a33-b004-b3404c12ea24">
 
 ## Changelog
 - v1.0.0 - Initial release with basic library management features.
@@ -57,3 +56,4 @@ This project does not have an official license yet.
 
 ## Author
 Developed by [Arif Yuniarto Fajar Bugaresa](https://www.linkedin.com/in/arifbugaresa/)
+
