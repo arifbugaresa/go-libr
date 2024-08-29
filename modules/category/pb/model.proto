@@ -19,8 +19,33 @@ message InsertCategoryResponse {
   string message = 2;
 }
 
+message ListCategoryRequest {
+  int64 page = 1;
+  int64 limit = 2;
+  string name = 3;
+}
+
+message ListCategoryResponse {
+  repeated Category categories = 1;
+  int64 totalData = 2;
+}
+
+message UpdateCategoryRequest {
+  string name = 1;
+  string description = 2;
+  string modified_by = 3;
+  int64 id = 4;
+}
+
+message UpdateCategoryResponse {
+  bool success = 1;
+  string message = 2;
+}
+
 service Service {
   rpc InsertCategory (InsertCategoryRequest) returns (InsertCategoryResponse);
+  rpc ListCategory (ListCategoryRequest) returns (ListCategoryResponse);
+  rpc UpdateCategory (UpdateCategoryRequest) returns (UpdateCategoryResponse);
 }
 
 option go_package = "modules/category/pb";

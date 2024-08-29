@@ -40,7 +40,10 @@ Once the application is running, the API will be available at http://localhost:8
 
 ## List Endpoint
 ### Category
-`GET` `localhost:8080/api/categories` - Retrieve a list of books.
+- `GET` `localhost:8080/api/categories` - Retrieve a list of books.
+- `POST` `localhost:8080/api/categories` - Insert data book by id.
+- `PUT` `localhost:8080/api/categories/:id` - Update data book by id.
+
 
 ## Architecture
 <img width="777" alt="Screenshot 2024-08-28 at 11 21 16" src="https://github.com/user-attachments/assets/e65db8ef-d648-49d0-a8f6-0ebefe411fa3">
