@@ -30,16 +30,15 @@ Libr is a library management application designed to simplify the management of 
 
    ```bash
    go mod tidy
-   
    go mod vendor
-
    
 ## Usage
 ### Running the API
-Once the application is running, the API will be available at http://localhost:8080. You can access the API endpoints using tools like cURL or Postman or you can use swagger docs.
+Once the application is running, the API will be available at http://localhost:8080. You can access the API endpoints using tools like Postman or you can use swagger docs (http://localhost:8080/swagger/index.html)
 
 ## List Endpoint
 ### Category
+Service Category: https://github.com/arifbugaresa/go-libr-category
 - `GET` `localhost:8080/api/categories` - Retrieve a list of books.
 - `POST` `localhost:8080/api/categories` - Insert data book by id.
 - `PUT` `localhost:8080/api/categories/:id` - Update data book by id.
