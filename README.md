@@ -5,10 +5,10 @@
 Libr is a library management application designed to simplify the management of your library's collections and operations. The application offers essential features, including Book Management for organizing book inventories, Author Management for centralized author data management, Book Categories Management to categorize and organize collections, and Book Stock Management to ensure book availability.
 
 ## key Feature
-- **Book Management**: Add, update, delete, and view book details.
-- **Author Management**: Manage author information.
-- **Book Categories**: Organize and manage book categories.
-- **Borrowing & Returning Book**: Facilitate the process of borrowing and returning books.
+- **Book Management**: Add, update, delete, and view book details. [ON PROGRESS]
+- **Author Management**: Manage author information. [ON PROGRESS]
+- **Book Categories**: Organize and manage book categories. [DONE]
+- **Borrowing & Returning Book**: Facilitate the process of borrowing and returning books. [ON PROGRESS]
 
 ## Installation
 ### Prerequisites
