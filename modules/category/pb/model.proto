@@ -42,10 +42,19 @@ message UpdateCategoryResponse {
   string message = 2;
 }
 
+message GetCategoryByIdRequest {
+  int64 id = 1;
+}
+
+message GetCategoryByIdResponse {
+  Category category = 1;
+}
+
 service Service {
   rpc InsertCategory (InsertCategoryRequest) returns (InsertCategoryResponse);
   rpc ListCategory (ListCategoryRequest) returns (ListCategoryResponse);
   rpc UpdateCategory (UpdateCategoryRequest) returns (UpdateCategoryResponse);
+  rpc GetCategoryById (GetCategoryByIdRequest) returns (GetCategoryByIdResponse);
 }
 
 option go_package = "modules/category/pb";

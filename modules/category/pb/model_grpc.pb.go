@@ -19,9 +19,10 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	Service_InsertCategory_FullMethodName = "/category.Service/InsertCategory"
-	Service_ListCategory_FullMethodName   = "/category.Service/ListCategory"
-	Service_UpdateCategory_FullMethodName = "/category.Service/UpdateCategory"
+	Service_InsertCategory_FullMethodName  = "/category.Service/InsertCategory"
+	Service_ListCategory_FullMethodName    = "/category.Service/ListCategory"
+	Service_UpdateCategory_FullMethodName  = "/category.Service/UpdateCategory"
+	Service_GetCategoryById_FullMethodName = "/category.Service/GetCategoryById"
 )
 
 // ServiceClient is the client API for Service service.
@@ -31,6 +32,7 @@ type ServiceClient interface {
 	InsertCategory(ctx context.Context, in *InsertCategoryRequest, opts ...grpc.CallOption) (*InsertCategoryResponse, error)
 	ListCategory(ctx context.Context, in *ListCategoryRequest, opts ...grpc.CallOption) (*ListCategoryResponse, error)
 	UpdateCategory(ctx context.Context, in *UpdateCategoryRequest, opts ...grpc.CallOption) (*UpdateCategoryResponse, error)
+	GetCategoryById(ctx context.Context, in *GetCategoryByIdRequest, opts ...grpc.CallOption) (*GetCategoryByIdResponse, error)
 }
 
 type serviceClient struct {
@@ -71,6 +73,16 @@ func (c *serviceClient) UpdateCategory(ctx context.Context, in *UpdateCategoryRe
 	return out, nil
 }
 
+func (c *serviceClient) GetCategoryById(ctx context.Context, in *GetCategoryByIdRequest, opts ...grpc.CallOption) (*GetCategoryByIdResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetCategoryByIdResponse)
+	err := c.cc.Invoke(ctx, Service_GetCategoryById_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ServiceServer is the server API for Service service.
 // All implementations must embed UnimplementedServiceServer
 // for forward compatibility.
@@ -78,6 +90,7 @@ type ServiceServer interface {
 	InsertCategory(context.Context, *InsertCategoryRequest) (*InsertCategoryResponse, error)
 	ListCategory(context.Context, *ListCategoryRequest) (*ListCategoryResponse, error)
 	UpdateCategory(context.Context, *UpdateCategoryRequest) (*UpdateCategoryResponse, error)
+	GetCategoryById(context.Context, *GetCategoryByIdRequest) (*GetCategoryByIdResponse, error)
 	mustEmbedUnimplementedServiceServer()
 }
 
@@ -96,6 +109,9 @@ func (UnimplementedServiceServer) ListCategory(context.Context, *ListCategoryReq
 }
 func (UnimplementedServiceServer) UpdateCategory(context.Context, *UpdateCategoryRequest) (*UpdateCategoryResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateCategory not implemented")
+}
+func (UnimplementedServiceServer) GetCategoryById(context.Context, *GetCategoryByIdRequest) (*GetCategoryByIdResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetCategoryById not implemented")
 }
 func (UnimplementedServiceServer) mustEmbedUnimplementedServiceServer() {}
 func (UnimplementedServiceServer) testEmbeddedByValue()                 {}
@@ -172,6 +188,24 @@ func _Service_UpdateCategory_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Service_GetCategoryById_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetCategoryByIdRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ServiceServer).GetCategoryById(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Service_GetCategoryById_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ServiceServer).GetCategoryById(ctx, req.(*GetCategoryByIdRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Service_ServiceDesc is the grpc.ServiceDesc for Service service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -190,6 +224,10 @@ var Service_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UpdateCategory",
 			Handler:    _Service_UpdateCategory_Handler,
+		},
+		{
+			MethodName: "GetCategoryById",
+			Handler:    _Service_GetCategoryById_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
